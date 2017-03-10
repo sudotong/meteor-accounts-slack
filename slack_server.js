@@ -15,7 +15,15 @@ OAuth.registerService('slack', 2, null, function(query) {
   var ret = {
     serviceData: {
       id: user_id,
-      accessToken: tokens.access_token
+      accessToken: tokens.access_token,
+      profile: {
+        name: identity.user,
+        url: identity.url,
+        team: identity.team,
+        user_id: identity.user_id,
+        team_id: identity.team_id,
+      },
+      tokens: tokens
     },
     options: {
       profile: {
@@ -55,7 +63,6 @@ var getTokens = function (query) {
           code: query.code,
           client_id: config.clientId,
           client_secret: OAuth.openSecret(config.secret),
-  //        redirect_uri: Meteor.absoluteUrl("_oauth/slack?close")
           redirect_uri: OAuth._redirectUri('slack', config),
           state: query.state
         }
