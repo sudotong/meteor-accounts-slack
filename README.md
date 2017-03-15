@@ -11,6 +11,8 @@ Package Dependencies
 
 Install
 -------
+
+clone this repo into the `packages/` directory in your meteor project. Then type:
 ```
-meteor add acemtp:accounts-slack
+meteor add sudotong:accounts-slack
 ```
